@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/header/header.component';
+import ChatBody from './components/chat-body/chat-body.component';
+import { signInWithGoogle, signOutUser } from './utils/firebase/firebase.util';
+import { useContext } from 'react';
+import { UserContext } from './contexts/user.context';
 
 function App() {
+  const { currentUser } = useContext(UserContext);
+  const logInUser = async () => {
+    await signInWithGoogle();
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='w-full max-w-3xl bg-slate-100 h-screen mx-auto my-0 font-sans flex flex-col' >
+      <Header />
+      <ChatBody />      
     </div>
   );
 }
