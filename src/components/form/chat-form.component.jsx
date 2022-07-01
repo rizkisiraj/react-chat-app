@@ -29,8 +29,8 @@ const ChatForm = () => {
 
     return (
         <form onSubmit={handleSubmit} className="h-16 fixed flex justify-center items-center w-full max-w-3xl bottom-0">
-            <input onChange={handleChange} value={inputValue} className="basis-4/5 bg-white h-full placeholder-slate-400 focus:outline-none px-1 sm:px-4" type="text" placeholder="Write message..."/>
-            <button className="bg-blue-500 h-full text-white basis-1/5 text-center" type="submit"><FiSend className="text-3xl text-center w-full"/></button>
+            <input onChange={handleChange} value={inputValue} className="basis-3/4 sm:basis-4/5 bg-white h-full placeholder-slate-400 focus:outline-none px-1 sm:px-4" type="text" placeholder="Write message..."/>
+            <button className="bg-blue-500 h-full text-white basis-1/4 sm:basis-1/5 text-center" type="submit"><FiSend className="text-3xl text-center w-full"/></button>
         </form>
     )
 }

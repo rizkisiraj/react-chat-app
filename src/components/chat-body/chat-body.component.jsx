@@ -1,6 +1,6 @@
 import { onDocumentSnapshotChange, signInWithGoogle } from "../../utils/firebase/firebase.util";
 import { UserContext } from "../../contexts/user.context";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { getDocs } from "firebase/firestore";
 
 import Message from "../message/message.component";
@@ -21,6 +21,7 @@ const dummyData = [{
 const ChatBody = () => {
     const {currentUser} = useContext(UserContext);
     const [messages, setMessages] = useState([]);
+    const dummy = useRef();
 
     useEffect(() => {
         const unsubscribe = onDocumentSnapshotChange(snapshot => {
@@ -32,7 +33,9 @@ const ChatBody = () => {
     },[])
 
     
-
+    useEffect(() => {
+        dummy.current.scrollIntoView({ behavior: 'smooth' });
+      }, [messages])
     
 
     const logInUser = async () => {
@@ -43,13 +46,13 @@ const ChatBody = () => {
         <main className={`w-full flex-1 bg-slate-400 flex py-6 px-2 gap-6 ${currentUser ? "overflow-y-scroll mb-16" : "justify-center items-center"} flex-col`}>
             {
                 currentUser ? 
-                (
+                
                     messages.map((data,index) => {
                         return (
                             <Message key={index} data={data} />
                         )
                     })
-                ) 
+
                 : (
                 <>
                 <button onClick={logInUser} className="text-3xl mb-4 p-5 bg-blue-400 text-white">Sign In With Google</button>
@@ -57,7 +60,7 @@ const ChatBody = () => {
                 </>
                 )
             }
-            
+            <span ref={dummy}></span>
         </main>
     )
 }
