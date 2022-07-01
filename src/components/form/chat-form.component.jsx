@@ -12,6 +12,8 @@ const ChatForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        if(!inputValue) return;
+
         const data = {
             profileURL: currentUser.photoURL,
             chat: inputValue,
@@ -26,9 +28,9 @@ const ChatForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="sm:h-16 h-10 sm:h-20 flex justify-center items-center w-full">
-            <input onChange={handleChange} value={inputValue} className="flex-1 bg-white h-full placeholder-slate-400 focus:outline-none px-1 sm:px-4" type="text" placeholder="Write message..."/>
-            <button className="bg-blue-500 h-full text-white px-1 sm:px-7" type="submit"><FiSend className="text-lg sm:text-4xl"/></button>
+        <form onSubmit={handleSubmit} className="h-16 fixed flex justify-center items-center w-full max-w-3xl bottom-0">
+            <input onChange={handleChange} value={inputValue} className="basis-4/5 bg-white h-full placeholder-slate-400 focus:outline-none px-1 sm:px-4" type="text" placeholder="Write message..."/>
+            <button className="bg-blue-500 h-full text-white basis-1/5 text-center" type="submit"><FiSend className="text-3xl text-center w-full"/></button>
         </form>
     )
 }

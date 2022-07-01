@@ -23,7 +23,6 @@ const ChatBody = () => {
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
-        
         const unsubscribe = onDocumentSnapshotChange(snapshot => {
             const liberalData = [];
             snapshot.forEach(snap => liberalData.push(snap.data()))
@@ -41,7 +40,7 @@ const ChatBody = () => {
     }
 
     return(
-        <main className={`w-full flex-1 bg-slate-400 flex py-6 px-2 gap-6 ${currentUser ? "overflow-y-scroll" : "justify-center items-center"} flex-col`}>
+        <main className={`w-full flex-1 bg-slate-400 flex py-6 px-2 gap-6 ${currentUser ? "overflow-y-scroll mb-16" : "justify-center items-center"} flex-col`}>
             {
                 currentUser ? 
                 (
